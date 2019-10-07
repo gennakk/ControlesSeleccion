@@ -28,6 +28,34 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        Button btnEj2 = findViewById(R.id.btnEj2);
+
+        btnEj2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this,Ejercicio2.class);
+
+                startActivity(intent);
+
+
+            }
+        });
+
+        Button btnEj3 = findViewById(R.id.btnEj3);
+
+        btnEj3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this,Ejercicio3.class);
+
+                startActivity(intent);
+
+
+            }
+        });
     }
 
 

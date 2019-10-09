@@ -8,10 +8,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +27,7 @@ import java.util.ArrayList;
 
 public class Ejercicio3 extends AppCompatActivity {
 
+    TextView textView;
     ListView listView;
     ArrayList<Bitmap> arrayFoto;
     FloatingActionButton btnFoto,btnVolver;
@@ -34,6 +39,7 @@ public class Ejercicio3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ejercicio3);
 
+        textView = findViewById(R.id.textView);
 
         listView = findViewById(R.id.listView);
 
@@ -71,10 +77,12 @@ public class Ejercicio3 extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+
+
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-
             arrayFoto.add(imageBitmap);
+
 
 
 

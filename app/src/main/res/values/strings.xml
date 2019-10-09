@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ControlesSeleccion</string>
+    <string name="ej3text">Pulsar en la foto para mandar e-mail</string>
 </resources>

@@ -1,33 +1,31 @@
 package com.example.controlesseleccion;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-
-import static android.view.ViewGroup.FOCUS_BLOCK_DESCENDANTS;
 
 public class Ejercicio3 extends AppCompatActivity {
 
     ListView listView;
     ArrayList<Bitmap> arrayFoto;
-    Button btnFoto;
+    FloatingActionButton btnFoto,btnVolver;
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
 
@@ -49,6 +47,17 @@ public class Ejercicio3 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                 startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+
+            }
+        });
+
+        btnVolver = findViewById(R.id.btnVolver);
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                finish();
 
             }
         });
@@ -107,21 +116,16 @@ public class Ejercicio3 extends AppCompatActivity {
     }
 
     public void enviarCorreo (View view, double puntuacion,int posicion){
-        Intent intent = new Intent (Intent.ACTION_SEND);intent.setType("text/plain");
+        Intent intent = new Intent (Intent.ACTION_SEND);
+                intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Rating de foto número "+(posicion+1));
                 intent.putExtra(Intent.EXTRA_TEXT,"Puntuación = "+puntuacion+"\n Comentarios: ");
                 intent.putExtra(Intent.EXTRA_EMAIL,
                     new String[]{"informatika2011@gmail.com"});
-        startActivity(intent);}
+        startActivity(intent);
+    }
 
 
-    /*private static Bitmap rotateImage(Bitmap img, int degree) {
-        Matrix matrix = new Matrix();
-        matrix.postRotate(degree);
-        Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
-        img.recycle();
-        return rotatedImg;
-    }*/
 
 
 
